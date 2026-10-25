@@ -73,6 +73,31 @@ reproducible horoscope/panchang output.
   `JYOTISHA_TODAY`/`?date=` is supplied.
 - `cargo test --workspace` is the release gate.
 
+## Download binaries
+
+Prebuilt standalone binaries are attached to each GitHub Release
+(https://github.com/borjinipun/jyotisha/releases):
+
+| Platform | Archive |
+| --- | --- |
+| Linux x86_64 (static, any distro) | `jyotisha-v*.*.*-linux-x86_64.tar.gz` |
+| macOS Apple Silicon (M1/M2/M3/…) | `jyotisha-v*.*.*-macos-apple-silicon.tar.gz` |
+| macOS Intel | `jyotisha-v*.*.*-macos-intel.tar.gz` |
+| Windows x86_64 | `jyotisha-v*.*.*-windows-x86_64.zip` |
+
+The archives contain the `jyotisha-server` binary plus `README.md` and `LICENSE`.
+No installation or runtime dependencies are required — extract and run:
+
+```sh
+tar xzf jyotisha-v0.1.0-linux-x86_64.tar.gz
+./jyotisha-v0.1.0-linux-x86_64/jyotisha-server --port 8080
+```
+
+On Windows, extract the zip and double-click or run `jyotisha-server.exe` in a
+terminal (SmartScreen may ask for confirmation for unsigned binaries).
+To run without a console window, keep it as a normal terminal process; the server
+listens on `127.0.0.1:8080` by default (`--port`, `--bind` to override).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
