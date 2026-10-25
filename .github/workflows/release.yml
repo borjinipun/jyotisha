@@ -25,11 +25,11 @@ jobs:
             ext: .tar.gz
             prep: sudo apt-get update -y && sudo apt-get install -y musl-tools
           - target: aarch64-apple-darwin
-            os: macos-latest # Apple Silicon runner
+            os: macos-latest # Apple Silicon runner, native target
             pkg: jyotisha-${{ github.ref_name }}-macos-apple-silicon
             ext: .tar.gz
           - target: x86_64-apple-darwin
-            os: macos-13 # Intel runner
+            os: macos-latest # Intel runners retired; cross-compile the Intel target on the arm64 runner
             pkg: jyotisha-${{ github.ref_name }}-macos-intel
             ext: .tar.gz
           - target: x86_64-pc-windows-msvc
