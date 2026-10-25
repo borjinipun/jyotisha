@@ -1,0 +1,9 @@
+[package]
+name = "astrology"
+description = "Pure astrology computation engine (sun/moon longitudes, zodiac, nakshatra, tithi, sunrise, horoscope text)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

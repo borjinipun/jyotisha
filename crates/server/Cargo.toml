@@ -1,0 +1,25 @@
+[package]
+name = "jyotisha-server"
+description = "HTTP server exposing the Jyotisha astrology engine (open-source, original implementation)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "jyotisha-server"
+path = "src/main.rs"
+
+[lib]
+name = "jyotisha_server"
+path = "src/lib.rs"
+
+[dependencies]
+astrology = { path = "../astrology" }
+axum = "0.8"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
