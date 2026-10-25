@@ -90,13 +90,25 @@ No installation or runtime dependencies are required — extract and run:
 
 ```sh
 tar xzf jyotisha-v0.1.0-linux-x86_64.tar.gz
-./jyotisha-v0.1.0-linux-x86_64/jyotisha-server --port 8080
+cd jyotisha-v0.1.0-*
+./jyotisha-server --port 8080
 ```
 
-On Windows, extract the zip and double-click or run `jyotisha-server.exe` in a
-terminal (SmartScreen may ask for confirmation for unsigned binaries).
-To run without a console window, keep it as a normal terminal process; the server
-listens on `127.0.0.1:8080` by default (`--port`, `--bind` to override).
+On Windows, extract the zip and run `jyotisha-server.exe` in a terminal
+(SmartScreen may ask for confirmation for unsigned binaries). On macOS,
+Gatekeeper may warn on first run of a downloaded unsigned binary; allow it
+via System Settings → Privacy & Security, or clear the quarantine flag:
+
+```sh
+xattr -d com.apple.quarantine jyotisha-server
+```
+
+The macOS Intel build is cross-compiled on an Apple Silicon runner using the
+universal macOS SDK; it runs natively on Intel Macs only (Apple Silicon Macs
+would need Rosetta 2 to run it — they should use the apple-silicon build).
+The Linux build is statically linked against musl, so it runs on any
+distribution without libc dependencies. The server listens on
+`127.0.0.1:8080` by default (`--port`, `--bind` to override).
 
 ## License
 

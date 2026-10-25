@@ -54,20 +54,19 @@ jobs:
       - name: Package (tar.gz)
         if: matrix.ext == '.tar.gz'
         run: |
-          BRN="jyotisha-${{ github.ref_name }}-${{ matrix.target }}"
+          BRN="${{ matrix.pkg }}"
           mkdir -p "dist/${BRN}"
           cp "target/${{ matrix.target }}/release/jyotisha-server" "dist/${BRN}/"
           cp README.md LICENSE "dist/${BRN}/"
-          tar czf "${{ matrix.pkg }}${{ matrix.ext }}" -C dist "${BRN}"
-          ls -la "${{ matrix.pkg }}${{ matrix.ext }}"
+          tar czf "${BRN}${{ matrix.ext }}" -C dist "${BRN}"
+          ls -la "${BRN}${{ matrix.ext }}"
         shell: bash
 
       - name: Package (zip)
         if: matrix.ext == '.zip'
         shell: pwsh
         run: |
-          $version = "${{ github.ref_name }}" -replace '^v',''
-          $dir = "jyotisha-$version-windows-x86_64"
+          $dir = "${{ matrix.pkg }}" -replace '\.zip$',''
           New-Item -ItemType Directory -Force -Path "dist/$dir" | Out-Null
           Copy-Item "target/${{ matrix.target }}/release/jyotisha-server.exe" "dist/$dir/"
           Copy-Item README.md, LICENSE "dist/$dir/"
